@@ -1,7 +1,7 @@
 # Zhaopin_Spider
 基于关键字搜索爬取相关岗位数据，以对相关行业的人力资源状况做一定分析。
 
-![流程图](https://raw.githubusercontent.com/lushan2866/python3/master/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20160308123256.png)
+![流程图](https://github.com/lushan2866/Zhaopin_Spider/blob/master/%E6%B5%81%E7%A8%8B%E5%9B%BE-visio.jpg)
 
 关键字模块：
 根据不同的关键字进行岗位搜索，，返回岗位URL，需要考虑到搜索结果可能是1-N页。
@@ -17,8 +17,9 @@
 
 目前存在和需要解决的一些问题：
 1、根据关键字生成sou_url(搜索页面)
-  需要解决如『编辑』转码到『%E7%BC%96%E8%BE%91』的问题
-  p从1到N的问题
+需要解决如『编辑』转码到『%E7%BC%96%E8%BE%91』的问题
+
   
 2、储存数据模块（我用的xlwt,但是还存在问题）
+
 3、略
