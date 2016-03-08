@@ -61,7 +61,7 @@ def writeXLS():
     xls.save('data.xls')
 
 
-####################正式运行代码区########################3
+########################################################3
 test_url= 'http://jobs.zhaopin.com/144793568250001.htm'
 
 print(find_job(read_html(test_url)))
