@@ -1,0 +1,5 @@
+*sublime*
+*venv/
+test.py
+.idea
+__pycache__
