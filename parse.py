@@ -5,18 +5,16 @@
 
 from urllib import request
 from bs4 import BeautifulSoup
-from url import url
 import re
 
 
-# find all jobs
-def parseurl(html):
+# find this page all jobs
+def parseurl(url):
 
-    # test
-    # html = url()
-
+    # init
+    html = url.read().decode('utf-8')
     soup = BeautifulSoup(html)
-    # table = soup.findAll('div', id='newlist_list_content_table')
+
     # url regular expression
     job_re = re.compile(r'http://jobs.zhaopin.com/\d*.htm')
     # 返回a标签的set类型
@@ -25,12 +23,14 @@ def parseurl(html):
 
     # 提取job url
     for link in jobtags:
+        # TODO
+        # if link not in visited:
         jobs.append(link.get('href'))
 
-    # print(jobs)
     return jobs
 
 
+# parse the job information
 def parsejob(joburl):
 
     # 读取页面并解码
@@ -46,8 +46,10 @@ def parsejob(joburl):
         'edu': '',
         'info': '',
         'company': '',
-        'url': joburl
+        'url': joburl,
+        'date': ''
     }
+
     # 寻找顶部信息
     job_title = soup.find(attrs={'class': 'inner-left fl'})
     job_info['name'] = job_title.h1.string
@@ -62,6 +64,8 @@ def parsejob(joburl):
             job_info['work_exp'] = li.strong.string
         if '最低学历' in li.span.string:
             job_info['edu'] = li.strong.string
+        if '发布日期' in li.span.string:
+            job_info['date'] = li.strong.string
 
     # 寻找职位描述
     job_content = soup.find(attrs={'class': 'tab-inner-cont'})
@@ -71,6 +75,10 @@ def parsejob(joburl):
     for div in job_content.stripped_strings:
         string.append(div)
     job_info['info'] = '\n'.join(string)
+
+    # test
+    # print(job_info)
+    return job_info
 
 # test
 # parseurl()
