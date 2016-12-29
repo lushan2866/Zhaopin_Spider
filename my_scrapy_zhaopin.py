@@ -52,16 +52,6 @@ def find_job(url_context):
     the_job_url=linkre7.findall(url_context)
     return (job_name,the_salary,the_work_ex,the_edu,the_job_ifo,the_company,the_job_url)
 
-#######存储岗位的多项信息，此函数仍有问题，待修复######
-def writeXLS():
-    xls = xlwt.Workbook('data.xls')
-    job_all = xls.add_sheet('job_all')
-    for x in range(len(a)):
-        job_all.write(0,x,a[x])
-    xls.save('data.xls')
-
-
-########################################################3
 test_url= 'http://jobs.zhaopin.com/144793568250001.htm'
 
 print(find_job(read_html(test_url)))
